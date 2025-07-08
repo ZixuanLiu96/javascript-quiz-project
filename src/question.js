@@ -9,15 +9,16 @@ class Question {
 
   // 2. shuffleChoices()
   shuffleChoices() {
-    const newArr = [];
-    const random = Math.floor(Math.random() * this.choices.length);
-    for (let i = this.choices.length; i > 0; i--) {
-      newArr.push(this.choices[random]);
-      this.choices.splice(random, 1);
+    for (let i = this.choices.length - 1; i > 0; i--) {
+      const random = Math.floor(Math.random() * this.choices.length);
+      [this.choices[i], this.choices[random]] = [
+        this.choices[random],
+        this.choices[i],
+      ];
     }
-    return newArr;
+    return this.choices;
   }
 }
 
-const question1 = new Question("11", [1, 2, 3, 4, 5], "123", 1);
-console.log(question1.shuffleChoices());
+// const question1 = new Question("11", [1, 2, 3, 4, 5], "123", 1);
+// console.log(question1.shuffleChoices());

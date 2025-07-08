@@ -19,13 +19,14 @@ class Quiz {
 
   // 4. shuffleQuestions()
   shuffleQuestions() {
-    const newQestionArr = [];
-
-    for (let i = this.questions.length; i > 0; i--) {
+    for (let i = this.questions.length - 1; i > 0; i--) {
       const random = Math.floor(Math.random() * this.questions.length);
-      newQestionArr.push(this.questions[random]);
+      [this.questions[i], this.questions[random]] = [
+        this.questions[random],
+        this.questions[i],
+      ];
     }
-    this.questions = newQestionArr;
+    return this.questions;
   }
 
   // 5. checkAnswer(answer)
@@ -59,38 +60,38 @@ class Quiz {
   }
 }
 
-const questions = [
-  {
-    text: "Question 1",
-    choices: ["a", "b", "c"],
-    answer: "a",
-    difficulty: 1,
-  },
-  {
-    text: "Question 2",
-    choices: ["d", "e", "f"],
-    answer: "d",
-    difficulty: 2,
-  },
-  {
-    text: "Question 3",
-    choices: ["g", "h", "i"],
-    answer: "g",
-    difficulty: 2,
-  },
-  {
-    text: "Question 4",
-    choices: ["j", "k", "l"],
-    answer: "j",
-    difficulty: 1,
-  },
-  {
-    text: "Question 5",
-    choices: ["m", "n", "o"],
-    answer: "m",
-    difficulty: 3,
-  },
-];
+// const questions = [
+//   {
+//     text: "Question 1",
+//     choices: ["a", "b", "c"],
+//     answer: "a",
+//     difficulty: 1,
+//   },
+//   {
+//     text: "Question 2",
+//     choices: ["d", "e", "f"],
+//     answer: "d",
+//     difficulty: 2,
+//   },
+//   {
+//     text: "Question 3",
+//     choices: ["g", "h", "i"],
+//     answer: "g",
+//     difficulty: 2,
+//   },
+//   {
+//     text: "Question 4",
+//     choices: ["j", "k", "l"],
+//     answer: "j",
+//     difficulty: 1,
+//   },
+//   {
+//     text: "Question 5",
+//     choices: ["m", "n", "o"],
+//     answer: "m",
+//     difficulty: 3,
+//   },
+// ];
 
-const quiz1 = new Quiz(questions, 60, 0, 0, 0);
-console.log(quiz1.averageDifficulty());
+// const quiz1 = new Quiz(questions, 60, 0, 0, 0);
+// console.log(quiz1.averageDifficulty());
